@@ -7,16 +7,17 @@
 - Authenticate to an API
 
 # Installation
-1. git clone the repository
+1. Unzip the 2 repository or fork
 2. in each directory (fronten and backend), type npm install in vscode terminal console
 3. follow instructions below
 
 ## 1. Backend 
 Project #10 - Argent Bank API
 You can see instructions about the backend [here](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API)
+- Don't forget to type npm start to launch the backend server
 
 ## 2. Frontend
-  In the frontend directory, type npm start to start the frontend app
+  In the frontend directory, type npm start to start the frontend server
   
 # Implement a state manager in a React application
 I use the Redux library, so according to the frontend package.json : 

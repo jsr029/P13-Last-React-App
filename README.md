@@ -1,46 +1,171 @@
-# Getting Started with Create React App and Redux
+# Rakotonirina_JeanSebastien_13_03072022
+## Openclassrooms P13 : Use an API for Bank user account with React
+# Expected Skills :
+- Implement a state manager in a React application
+- Interact with an API (Application Programming Interfatce)
+- Model an API
+- Authenticate to an API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Installation
+1. git clone the repository
+2. in each directory (fronten and backend), type npm install in vscode terminal console
+3. follow instructions below
 
-## Available Scripts
+## 1. Backend in the directory named Project-10-Bank-API
+Project #10 - Argent Bank API
+This codebase contains the code needed to run the backend for Argent Bank.
 
-In the project directory, you can run:
+Getting Started
+Prerequisites
+Argent Bank uses the following tech stack:
 
-### `npm start`
+Node.js v12
+MongoDB Community Server
+Please make sure you have the right versions and download both packages. You can verify this by using the following commands in your terminal:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Check Node.js version
+node --version
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Check Mongo version
+mongo --version
+Instructions
+Fork this repo
+Clone the repo onto your computer
+Open a terminal window in the cloned project
+Run the following commands:
+## Install dependencies
+npm install
 
-### `npm test`
+## Start local dev server
+npm run dev:server
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Populate database with two users
+npm run populate-db
+Your server should now be running at http://locahost:27017 and you will now have two users in your MongoDB database!
 
-### `npm run build`
+Populated Database Data
+Once you run the populate-db script, you should have two users in your database:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Tony Stark
+First Name: Tony
+Last Name: Stark
+Email: tony@stark.com
+Password: password123
+Steve Rogers
+First Name: Steve,
+Last Name: Rogers,
+Email: steve@rogers.com,
+Password: password456
+API Documentation
+To learn more about how the API works, once you have started your local environment, you can visit: http://localhost:27017/api-docs
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Design Assets
+Static HTML and CSS has been created for most of the site and is located in: /designs.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For some of the dynamic features, like toggling user editing, there is a mock-up for it in /designs/wireframes/edit-user-name.png.
 
-### `npm run eject`
+And for the API model that you will be proposing for transactitons, the wireframe can be found in /designs/wireframes/transactions.png.
+## 2. Frontend
+  In the frontend directory, type npm start to start the frontend app
+  
+# Implement a state manager in a React application
+I use the Redux library, so according to the frontend package.json : 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  <div style="width:100%;margin:0 auto">
+    <img src="./img/packageJson.PNG" alt="frontend json package image" />
+  </div>
+  
+I installed 
+   - "redux": "^4.2.0", the state manager
+   - "redux-devtools-extension": "^2.13.9", Dev tools for chrome
+   - "redux-state-sync": "^3.1.4", A middleware for redux to sync state in different tabs
+   - "redux-thunk": "^2.4.1", Redux Thunk middleware allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action.
+    
+ Middleware (intergiciel in french) is like a bridge between the others applications, tools, bdd to give unified services at users.
+ 
+ # Implementation
+   <div style="width:100%;margin:0 auto">
+    <img src="./img/indexAtTheRootDir.PNG" alt="frontend json package image" />
+  </div>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+First, we need to create the store with createStore redux function, then we wrap the App component by Provider component wich contains the store in its props, and then the magic happens. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Actions
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+We have all actions needed for this app inside ./src/actions/index.jsx
 
-## Learn More
+For example, 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+export const showForm = () => {
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    return {
+    
+        type: 'SHOWFORM'
+        
+    }
+    
+}
+
+  2. Reducers ./src/reducers/showFormReducer.jsx
+
+  Each action normally has got a specific reducer function
+
+  const showFormReducer = (state=true, action) => {
+
+    switch(action.type){
+    
+        case 'SHOWFORM':
+        
+            return !state 
+            
+        default:
+        
+            return state
+            
+    }
+    
+}
+
+export default showFormReducer
+
+  3. Combine reducers
+
+   <div style="width:100%;margin:0 auto">
+    <img src="./img/combineReducers.PNG" alt="frontend json package image" />
+  </div>
+
+  4. useSelector and dispatch react-redux hooks
+   
+   <div>
+    <img src="./img/UserProfilePart1.PNG" alt="frontend sign-in component header side image" />
+  </div>
+  
+    We import showFrom from ./src/actions/index.jsx, and showFormState comes from useSelector (the store).
+  
+  <div>
+    <img src="./img/UserProfilePart2.PNG" alt="frontend sign-in component return side package image" />
+  </div>
+  
+    We use dispatch(showForm()) in the handleClick function to fire the action.
+    
+  <div>
+    <img src="./img/UserProfilePart3.PNG" alt="frontend sign-in component return side package image" />
+  </div>
+    
+    Finally, with this ternary showFormState ? firstName + ' ' + lastName + ' !' : etc... , we have the final state depends on the click edit name button.
+
+# Model an API
+
+Thanks to Postman, I can easely build my swagger (openapi new version of swagger).
+
+  <div>
+    <img src="./img/postman.PNG" alt="Swagger" />
+  </div>
+
+openApi is a way to "draw" or model (modelize?) the API.
+
+  <div>
+    <img src="./img/openApi.png" alt="Swagger" />
+  </div>
+
+This is a kind of schema about what are the possible requests we can send to the API or/and possible responses from the API

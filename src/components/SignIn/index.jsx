@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import {  useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import { Link } from 'react-router-dom'
-import { loginUser, reset } from '../../actions'
+import { loginUser, reset, showRememberMe } from '../../actions'
+import { history } from '../../App';
 import Footer from '../Footer'
 import NavMain from '../NavMain'
 
@@ -15,7 +16,14 @@ function SignIn() {
   const status = useSelector(state => state.loginReducer.status)
   const message = useSelector(state => state.loginReducer.message)
 
+  const rmb = useSelector(state => state.showRememberMeReducer)
+
+  const handleClick = (e) => {
+    dispatch(showRememberMe())
+    history.push('/user')
+  }
   const onSubmit = (data) => {
+    console.log(data)
     dispatch(loginUser(data.email, data.password, data.rememberMe))
   }
   

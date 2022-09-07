@@ -21,7 +21,6 @@ function App() {
           <Route path='/sign-in' component={SignIn} />
           <Route path="/sign-up" component={SignUp} />
           <Route path="/user" component={UserProfile} />
-          <Route path="/user/:name" component={UserProfile} />
           <Route path="/edit-profile/:name" component={EditProfile} />
           <Route path="*">
             <Redirect to='/' />

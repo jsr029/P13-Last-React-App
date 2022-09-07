@@ -6,6 +6,7 @@ import { modifyName, showForm, buttonName, classButton } from "../../actions"
 import NavMain from '../NavMain'
 import Footer from '../Footer'
 import { history } from '../../App'
+//import showFormReducer from '../../reducers/showForm'
 
 function UserProfile() {
     const dispatch = useDispatch();

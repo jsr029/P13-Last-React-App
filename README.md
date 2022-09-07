@@ -11,17 +11,9 @@
 2. in each directory (fronten and backend), type npm install in vscode terminal console
 3. follow instructions below
 
-## 1. Backend in the directory named Project-10-Bank-API
+## 1. Backend 
 Project #10 - Argent Bank API
-This codebase contains the code needed to run the backend for Argent Bank.
-
-Getting Started
-Prerequisites
-Argent Bank uses the following tech stack:
-
-Node.js v12
-MongoDB Community Server
-Please make sure you have the right versions and download both packages. You can verify this by using the following commands in your terminal:
+You can see instructions about the backend [here](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API)
 
 ## Check Node.js version
 node --version

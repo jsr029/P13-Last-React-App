@@ -134,7 +134,7 @@ export default showFormReducer
     <img src="./img/combineReducers.PNG" alt="frontend json package image" />
   </div>
 
-  4. useSelector and dispatch react-redux hooks
+  4. useSelector used to get datas from the store and dispatch actions to store them
    
    <div>
     <img src="./img/UserProfilePart1.PNG" alt="frontend sign-in component header side image" />
